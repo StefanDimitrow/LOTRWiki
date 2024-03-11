@@ -11,6 +11,13 @@ import { AsideComponent } from './main/aside/aside.component';
 import { MapComponent } from './pages/map/map.component';
 import { HomeComponent } from './pages/home/home.component';
 
+import { SharedModule } from './shared/shared.module';
+
+
+
+
+
+
 
 @NgModule({
     declarations: [
@@ -20,6 +27,8 @@ import { HomeComponent } from './pages/home/home.component';
         AsideComponent,
         MapComponent,
         HomeComponent,
+       
+
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -27,6 +36,7 @@ import { HomeComponent } from './pages/home/home.component';
         BrowserModule,
         AppRoutingModule,
         CoreModule,
+        SharedModule
 
     ]
 })
