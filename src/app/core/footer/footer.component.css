@@ -1,0 +1,19 @@
+.footer-wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  border-style: ridge;
+  background-color: rgb(0, 0, 0);
+}
+.page-footer {
+  padding: 1rem;
+  margin: 1rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-style: oblique;
+  font-size: 2rem;
+  text-align: center;
+  color: antiquewhite;
+}
+img{
+    justify-self: center
+}
