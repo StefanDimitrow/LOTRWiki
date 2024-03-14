@@ -9,7 +9,10 @@ import { AsideComponent } from './main/aside/aside.component';
 import { MapComponent } from './pages/map/map.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
+import { BooksComponent } from './pages/books/books.component';
+
 
 @NgModule({
     declarations: [
@@ -19,11 +22,15 @@ import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
         AsideComponent,
         MapComponent,
         HomeComponent,
+        BooksComponent,
+       
+        
 
     ],
     providers: [],
     bootstrap: [AppComponent],
     imports: [
+        HttpClientModule,
         BrowserModule,
         AppRoutingModule,
         CoreModule,

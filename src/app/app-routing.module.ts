@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MapComponent } from './pages/map/map.component';
 import { HomeComponent } from './pages/home/home.component';
+import { BooksComponent } from './pages/books/books.component';
+
 
 
 
@@ -10,7 +12,8 @@ import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'map', component: MapComponent }
+  { path: 'map', component: MapComponent },
+  {path:'books', component:BooksComponent}  
 
 ];
 

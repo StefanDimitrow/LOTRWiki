@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div *ngIf="books.length > 0">
+  <h2>List of Books</h2>
+  <ul>
+    <li *ngFor="let book of books">
+      <h3>{{ book.title }}</h3>
+      <p><strong>Author:</strong> {{ book.author }}</p>
+      <p><strong>Publication Date:</strong> {{ book.publication_date }}</p>
+      <p><strong>Characters:</strong></p>
+      <ul>
+        <ng-container *ngFor="let character of book.characters">
+          <li><p>{{ character.name }}</p></li>
+        </ng-container>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="books.length === 0">
+  <p>No books found.</p>
+</div>
+<app-footer></app-footer>
