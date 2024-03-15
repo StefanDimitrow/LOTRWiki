@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
 import { BooksComponent } from './pages/books/books.component';
-
+import { FilmsComponent } from './pages/films/films.component';
 
 @NgModule({
     declarations: [
@@ -23,9 +23,7 @@ import { BooksComponent } from './pages/books/books.component';
         MapComponent,
         HomeComponent,
         BooksComponent,
-       
-        
-
+        FilmsComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

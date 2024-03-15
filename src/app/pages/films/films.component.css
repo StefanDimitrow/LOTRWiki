@@ -1,22 +1,24 @@
-.wrapper{
-    display: flex;
+.wrapper {
+    display:flex;
     flex-direction: row;
     background-color: white;
 }
-.books-cover{
+.films-wrapper{
     display: flex;
     flex-direction: column;
     padding: 3rem;
     margin: 3rem;
 }
-.books-wrapper{
+.section {
+    padding: 1rem;
+    margin: 1rem;
+}
+.film-item{
+    margin-bottom:5rem;
     background-color: gray;
-    padding: 5rem;
-    margin: 5rem;
     border-style: inset;
     border-radius: 1rem;
 }
-
 h1{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: oblique;

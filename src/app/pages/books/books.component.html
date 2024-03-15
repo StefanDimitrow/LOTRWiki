@@ -14,16 +14,7 @@
       <section *ngFor="let book of books">
         <h1>{{ book.title }}</h1>
         <p>Author:{{ book.author }}</p>
-
         <p>Publication Date:{{ book.publication_date }}</p>
-        <p>Characters:</p>
-        <ul>
-          <ng-container *ngFor="let character of book.characters">
-            <li>
-              <p>{{ character.name }}</p>
-            </li>
-          </ng-container>
-        </ul>
       </section>
     </article>
   </div>
