@@ -3,7 +3,10 @@
   margin: 15px;
   height: 100%;
   width: 75%;
-  background-color:whitesmoke
+  background-color:whitesmoke;
+  border-style: outset;
+  border-color: black;
+  
 }
 h1 {
   font-size: 2.5rem;
