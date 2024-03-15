@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
+import { CharactersComponent } from './pages/characters/characters.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { FilmsComponent } from './pages/films/films.component';
         HomeComponent,
         BooksComponent,
         FilmsComponent,
+        CharactersComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

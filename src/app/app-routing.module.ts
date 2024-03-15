@@ -5,6 +5,7 @@ import { MapComponent } from './pages/map/map.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
+import { CharactersComponent } from './pages/characters/characters.component';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'map', component: MapComponent },
   {path:'books', component:BooksComponent} ,
-  {path: 'films', component:FilmsComponent}
+  {path: 'films', component:FilmsComponent},
+  {path: 'characters', component:CharactersComponent},
 ];
 
 @NgModule({

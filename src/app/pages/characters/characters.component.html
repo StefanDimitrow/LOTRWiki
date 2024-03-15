@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div *ngIf="characters.length > 0" class="wrapper">
+        <article class="list-characters">
+          <section *ngFor="let character of characters">
+            <h1>{{ character.name }}</h1>
+            <p>Author:{{ character.realm }}</p>
+            <p>Publication Date:{{ character.height }}</p>
+          </section>
+        </article>
+      </div>
+</div>
