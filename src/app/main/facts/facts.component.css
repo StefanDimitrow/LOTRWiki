@@ -6,8 +6,9 @@
   background-color:whitesmoke
 }
 h1 {
-  font-size: 35px;
+  font-size: 2.5rem;
   font-weight: bold;
+  text-align: center;
 }
 .a-section {
   padding: 50px;

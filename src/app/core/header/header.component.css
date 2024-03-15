@@ -21,7 +21,8 @@ h1{
     justify-self: center;
     font-weight: bold;
     font-style: oblique;
-    color: rgb(158, 158, 4)
+    color:gold;
+    font-weight: bold;
     
     
 }
@@ -32,5 +33,6 @@ p{
     padding: 50px;
     font-size: 50px;
     font-style: italic;
-    color: rgb(158, 158, 4)
+    color:gold;
+    font-weight: bold;
 }
