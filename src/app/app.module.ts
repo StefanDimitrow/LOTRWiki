@@ -14,6 +14,8 @@ import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
+import { SpeciesComponent } from './pages/species/species.component';
+import { RealmsComponent } from './pages/realms/realms.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +28,8 @@ import { CharactersComponent } from './pages/characters/characters.component';
         BooksComponent,
         FilmsComponent,
         CharactersComponent,
+        SpeciesComponent,
+        RealmsComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

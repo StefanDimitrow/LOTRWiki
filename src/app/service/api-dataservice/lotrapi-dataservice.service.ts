@@ -3,23 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiResponse } from './dataservice-interface';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LotrapiDataserviceService {
-  
-  constructor(private http:HttpClient){}
-  
+  constructor(private http: HttpClient) {}
 
   getBooks(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/books')
+    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/books');
   }
-  getFilms(): Observable<ApiResponse>{
-    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/films')
+  getFilms(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/films');
   }
-  getCharacters() : Observable<ApiResponse>{
-    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/characters')
+  getCharacters(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/characters');
+  }
+  getSpecies(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/species');
+  }
+  getRealms():Observable<ApiResponse>{
+    return this.http.get<ApiResponse>('https://lotrapi.co/api/v1/realms')
   }
 }

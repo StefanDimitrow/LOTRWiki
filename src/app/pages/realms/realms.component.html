@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="realms-wrapper">
+    <article class="article-realms">
+        <section class="realms" *ngFor="let realm of realms">
+        <p>Name: {{realm.name}}</p>
+        <p>Capital: {{realm.capital }}</p>
+        <p>Founded date: {{realm.founded_date}}</p>
+        <p>Type: {{realm.type}}</p>
+        <p>Location: {{realm.location}}</p>
+        <p>Inhabitants: {{realm.inhabitants}}</p>
+    </section>
+    </article>
+</div>

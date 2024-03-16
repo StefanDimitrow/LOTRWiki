@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
+import { SpeciesComponent } from './pages/species/species.component';
+import { RealmsComponent } from './pages/realms/realms.component';
 
 
 
@@ -18,6 +20,9 @@ const routes: Routes = [
   {path:'books', component:BooksComponent} ,
   {path: 'films', component:FilmsComponent},
   {path: 'characters', component:CharactersComponent},
+  {path: 'species', component:SpeciesComponent},
+  {path: 'realms', component:RealmsComponent}
+  
 ];
 
 @NgModule({

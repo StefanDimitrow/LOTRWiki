@@ -34,5 +34,17 @@ export interface Characters {
     date_of_birth: string;
     date_of_death: string;
     weapons: string[];
+}
+export interface Species {
+    name:string;
+    
+}
+export interface Realms {
+    name:string;
+    capital:string;
+    founded_date:string;
+    type:string;
+    location:string;
+    inhabitants:string[];
 
 }
