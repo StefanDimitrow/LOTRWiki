@@ -1,26 +1,10 @@
 <app-navbar></app-navbar>
-<div class="wrapper">
-  <div class="books-cover">
-    <img
-      src="../../../assets/img/fellowship-cover.jpg"
-      alt="fellowship-cover"
-    />
-    <img src="../../../assets/img/two towers - cover.jpg" alt="tower-cover" />
-    <img src="../../../assets/img/return-cover.jpg" alt="return-cover" />
-    <img src="../../../assets/img/Hobbit-cover.jpg" alt="Hobbit-cover" />
-  </div>
-  <div *ngIf="books.length > 0" class="books-wrapper">
-    <article class="list-books">
-      <section *ngFor="let book of books">
-        <h1>{{ book.title }}</h1>
-        <p>Author:{{ book.author }}</p>
-        <p>Publication Date:{{ book.publication_date }}</p>
-      </section>
+<div class="books-wrapper">
+    <article class="article-books">
+        <section class="books" *ngFor="let book of books">
+        <p>Name: {{book.title}}</p>
+        <p>Author: {{book.author}}</p>
+        <p>Publication date: {{book.publication_date}}</p>
+    </section>
     </article>
-  </div>
-
-  <div *ngIf="books.length === 0">
-    <p>Books are loading</p>
-  </div>
 </div>
-<app-footer></app-footer>

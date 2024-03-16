@@ -1,24 +1,15 @@
 <app-navbar></app-navbar>
-<div class="wrapper">
-    <div *ngIf="characters.length > 0" class="wrapper">
-        <article class="list-characters">
-          <section *ngFor="let character of characters">
-            <h1>{{ character.name }}</h1>
-            <p>Realm:{{ character.realm }}</p>
-            <p>Height:{{ character.height }}</p>
-            <p>Hair color:{{character.hair_color}}</p>
-            <p>Eye color:{{character.eye_color}}</p>
-            <p>Date of birth:{{character.date_of_birth}}</p>
-            <p>Date of death:{{character.date_of_death}}</p>
-            <p>Gender:{{character.gender}}</p>
-            <p>Species:{{character.species}}</p>
-            <p>Race:{{character.race}}</p>
-            <p>Group:{{character.group}}</p>
-            <p>Wapons:{{character.weapons}}</p>
-            <p>Languages:{{character.languages}}</p>
-            <p>Films:{{character.films}}</p>
-            <p>Books:{{character.books}}</p>
-          </section>
-        </article>
-      </div>
+<div class="characters-wrapper">
+    <article class="article-characters">
+        <section class="characters" *ngFor="let character of characters">
+        <p>Name: {{character.name}}</p>
+        <p>Height: {{character.height}}</p>
+        <p>Hair color: {{character.hair_color}}</p>
+        <p>Eye color: {{character.eye_color}}</p>
+        <p>Gender: {{character.gender}}</p>
+        <p>Date of birth: {{character.date_of_birth}}</p>
+        <p>Date of death: {{character.date_of_death}}</p>
+        <p>Weapons: {{character.weapons.join(', ')}}</p>
+    </section>
+    </article>
 </div>

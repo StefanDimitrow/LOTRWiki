@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ApiResponse, } from './films-interface';
+import { Component, OnInit} from '@angular/core';
+import { LotrapiDataserviceService } from 'src/app/service/api-dataservice/lotrapi-dataservice.service';
 
 
 
@@ -9,18 +8,16 @@ import { ApiResponse, } from './films-interface';
   templateUrl: './films.component.html',
   styleUrls: ['./films.component.css']
 })
-export class FilmsComponent implements OnInit {
-  films: any[] = [];
+export class FilmsComponent implements OnInit{
+  films: any[] =[];
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private dataService: LotrapiDataserviceService) {}
   ngOnInit(): void {
-    this.getFilms();
+   this.dataService.getFilms().subscribe((data) =>{
+    this.films = data.results;
+    console.log(data);
+    
+   })
   }
-  
-  getFilms() {
-    this.http.get<ApiResponse>('https://lotrapi.co/api/v1/films').subscribe((data: ApiResponse) => {
-      this.films = data.results;
-    });
-  }
+
 }

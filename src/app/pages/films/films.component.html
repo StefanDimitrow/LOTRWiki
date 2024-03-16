@@ -1,20 +1,12 @@
 <app-navbar></app-navbar>
-<div class="wrapper">
-  <div class="img">
-    <img src=".../../../../../assets/img/films-cover.webp" alt="">
-  </div>
-<div *ngIf="films.length > 0" class="films-wrapper">
-    <article>
-      <section *ngFor="let film of films" class="film-item">
-        <h1>{{ film.title }}</h1>
-        <p>Release Date: {{ film.release_date }}</p>
-        <p>Director(s): {{ film.director.join(', ') }}</p>
-        <p>Producer(s): {{ film.producer.join(', ') }}</p>
-      </section>
+<div class="films-wrapper">
+    <article class="films-list">
+        <section class="films" *ngFor="let film of films">
+            <p>Title: {{film.title}}</p>
+            <p>Release Date: {{film.release_date}}</p>
+            <p>Director's: {{film.director.join(', ')}} </p>
+            <p>Producer's{{film.producer.join(', ')}}</p>
+            
+        </section>
     </article>
-  </div>
-  <div *ngIf="films.length === 0">
-    <p>Films are loading.</p>
-  </div>
 </div>
-  <app-footer></app-footer>

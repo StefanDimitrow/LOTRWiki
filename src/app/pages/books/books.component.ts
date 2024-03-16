@@ -1,28 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ApiResponse } from './books-interface';
-
+import { LotrapiDataserviceService } from 'src/app/service/api-dataservice/lotrapi-dataservice.service';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit {
   books: any[] = [];
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private dataService: LotrapiDataserviceService) {}
   ngOnInit(): void {
-    this.getBooks();
-  }
-
-  public getBooks() {
-    this.http.get<any>('https://lotrapi.co/api/v1/books').subscribe((data: ApiResponse) => {
+    this.dataService.getBooks().subscribe((data) => {
       this.books = data.results;
+
       
     });
   }
-
-
 }
