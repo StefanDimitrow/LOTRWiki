@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse, } from './films-interface';
 
-import { forkJoin } from 'rxjs';
+
 
 @Component({
   selector: 'app-films',
