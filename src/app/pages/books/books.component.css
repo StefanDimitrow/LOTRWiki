@@ -1,0 +1,33 @@
+.books-wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 2rem;
+    margin: 2rem;
+    background-color: whitesmoke;
+    border-style: inset;
+    border-color: black;
+
+}
+.book{
+    
+    padding: 3rem;
+    margin: 3rem;
+    border-style: inset;
+    border-color: gold;
+    border-radius: 1rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    font-style: oblique;
+    text-align: left;
+}
+.img1{
+    
+    padding-left: 3rem;
+    padding-top: 3rem;
+}
+.img2{
+width: 35rem;
+height: auto;
+padding-left: 15rem;
+padding-top:3rem;
+}
