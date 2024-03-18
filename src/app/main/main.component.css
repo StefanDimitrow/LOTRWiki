@@ -1,6 +1,18 @@
-.main-wrapper{
-    padding: 30px;
-    margin: 30px;
-    display: flex;
-    
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .main-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  app-facts,
+  app-aside {
+    width: calc(50% - 20px); 
+    margin: 10px;
+  }
 }

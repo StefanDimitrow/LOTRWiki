@@ -1,6 +1,10 @@
-<div class="facts-wrapper">
-  <article *ngFor="let fact of facts">
-    <h2>{{ fact.title }}</h2>
-    <p>{{ fact.text }}</p>
-  </article>
+<div class="card-body" *ngIf="currentFact">
+  <h2 class="card-title">{{ currentFact.title }}</h2>
+  <p class="card-text">{{ currentFact.text }}</p>
+  <button type="button" class="btn btn-primary btn-lg" (click)="previousFact()">
+    Previous Fact
+  </button>
+  <button type="button" class="btn btn-primary btn-lg" (click)="nextFact()">
+    Next Fact
+  </button>
 </div>
