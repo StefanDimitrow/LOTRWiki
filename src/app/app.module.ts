@@ -16,6 +16,8 @@ import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { SpeciesComponent } from './pages/species/species.component';
 import { RealmsComponent } from './pages/realms/realms.component';
+import {AngularFireModule} from '@angular/fire/compat'
+import { environments} from './environments/environments';
 
 @NgModule({
     declarations: [
@@ -38,7 +40,8 @@ import { RealmsComponent } from './pages/realms/realms.component';
         BrowserModule,
         AppRoutingModule,
         CoreModule,
-        SharedModule
+        SharedModule,
+        AngularFireModule.initializeApp(environments.firebaseConfig)
     ]
 })
 export class AppModule { }
