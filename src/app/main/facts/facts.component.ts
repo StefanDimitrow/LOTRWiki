@@ -5,20 +5,18 @@ import { Facts } from 'src/app/service/facts-database/facts-interface';
 @Component({
   selector: 'app-facts',
   templateUrl: './facts.component.html',
-  styleUrls: ['./facts.component.css']
+  styleUrls: ['./facts.component.css'],
 })
 export class FactsComponent implements OnInit {
   facts: Facts[] = [];
   currentFactIndex = -1;
   currentFact: Facts | undefined;
 
-  constructor(private dataService: FactsDatabaseService) { }
+  constructor(private dataService: FactsDatabaseService) {}
 
   ngOnInit(): void {
     this.dataService.getFacts().subscribe((data: any) => {
-
-      this.facts = Object.keys(data).map(key => data[key]);
-
+      this.facts = Object.keys(data).map((key) => data[key]);
 
       this.nextFact();
     });
@@ -26,7 +24,6 @@ export class FactsComponent implements OnInit {
 
   nextFact(): void {
     if (this.facts.length === 0) return;
-
 
     let nextIndex: number;
     do {
@@ -39,7 +36,6 @@ export class FactsComponent implements OnInit {
 
   previousFact(): void {
     if (this.facts.length === 0) return;
-
 
     let prevIndex = this.currentFactIndex - 1;
     if (prevIndex < 0) {
