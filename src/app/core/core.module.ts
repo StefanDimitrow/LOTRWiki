@@ -7,8 +7,9 @@ import { SharedModule } from "../shared/shared.module";
 
 
 
+
 @NgModule({
-    declarations: [NavbarComponent, HeaderComponent, FooterComponent],
+    declarations: [NavbarComponent, HeaderComponent, FooterComponent,],
     exports: [NavbarComponent,
         HeaderComponent,
         FooterComponent],

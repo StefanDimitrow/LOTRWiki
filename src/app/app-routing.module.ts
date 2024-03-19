@@ -8,6 +8,8 @@ import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { SpeciesComponent } from './pages/species/species.component';
 import { RealmsComponent } from './pages/realms/realms.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'films', component:FilmsComponent},
   {path: 'characters', component:CharactersComponent},
   {path: 'species', component:SpeciesComponent},
-  {path: 'realms', component:RealmsComponent}
+  {path: 'realms', component:RealmsComponent},
+  {path: 'signup', component:SignupComponent},
+  {path: 'login', component:LoginComponent}
   
 ];
 

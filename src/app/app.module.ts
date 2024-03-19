@@ -16,8 +16,13 @@ import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { SpeciesComponent } from './pages/species/species.component';
 import { RealmsComponent } from './pages/realms/realms.component';
-import {AngularFireModule} from '@angular/fire/compat'
-import { environments} from './environments/environments';
+import { AngularFireModule } from '@angular/fire/compat'
+import { environments } from './environments/environments';
+import { SignupComponent } from './pages/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
     declarations: [
@@ -32,6 +37,8 @@ import { environments} from './environments/environments';
         CharactersComponent,
         SpeciesComponent,
         RealmsComponent,
+        SignupComponent,
+        LoginComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -41,7 +48,9 @@ import { environments} from './environments/environments';
         AppRoutingModule,
         CoreModule,
         SharedModule,
+        FormsModule,
         AngularFireModule.initializeApp(environments.firebaseConfig)
+
     ]
 })
 export class AppModule { }

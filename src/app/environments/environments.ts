@@ -4,8 +4,8 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
- export const environments = {
-  firebaseConfig : {
+export const environments = {
+  firebaseConfig: {
     apiKey: "AIzaSyASC7tauoW06BQ-QzfeVcd8qZoiwu4D94s",
     authDomain: "lotrwiki-angular.firebaseapp.com",
     databaseURL: "https://lotrwiki-angular-default-rtdb.firebaseio.com",
@@ -14,8 +14,8 @@ import { initializeApp } from "firebase/app";
     messagingSenderId: "330315673795",
     appId: "1:330315673795:web:893a019b987a1961eeb276"
   }
- }
- 
+}
+
 
 // Initialize Firebase
 const app = initializeApp(environments.firebaseConfig);
