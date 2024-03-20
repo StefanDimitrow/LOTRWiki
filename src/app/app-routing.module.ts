@@ -10,6 +10,7 @@ import { SpeciesComponent } from './pages/species/species.component';
 import { RealmsComponent } from './pages/realms/realms.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './service/authentication/auth.service';
 
 
 
@@ -19,14 +20,13 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'map', component: MapComponent },
-  {path:'books', component:BooksComponent} ,
-  {path: 'films', component:FilmsComponent},
-  {path: 'characters', component:CharactersComponent},
-  {path: 'species', component:SpeciesComponent},
-  {path: 'realms', component:RealmsComponent},
-  {path: 'signup', component:SignupComponent},
-  {path: 'login', component:LoginComponent}
-  
+  { path: 'books', component: BooksComponent, canActivate: [AuthService] },
+  { path: 'films', component: FilmsComponent, canActivate: [AuthService] },
+  { path: 'characters', component: CharactersComponent, canActivate: [AuthService] },
+  { path: 'species', component: SpeciesComponent, canActivate: [AuthService] },
+  { path: 'realms', component: RealmsComponent, canActivate: [AuthService] },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
