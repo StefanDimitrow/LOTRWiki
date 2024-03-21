@@ -10,9 +10,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './service/authentication/auth.service';
 
 
-
-
-
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },

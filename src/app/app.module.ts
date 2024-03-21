@@ -19,6 +19,9 @@ import { environments } from './environments/environments';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 
@@ -35,6 +38,7 @@ import { FormsModule } from '@angular/forms';
         CharactersComponent,
         SignupComponent,
         LoginComponent,
+      
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -45,7 +49,10 @@ import { FormsModule } from '@angular/forms';
         CoreModule,
         SharedModule,
         FormsModule,
-        AngularFireModule.initializeApp(environments.firebaseConfig)
+        AngularFireModule.initializeApp(environments.firebaseConfig),
+        BrowserAnimationsModule,
+        MatCardModule
+       
 
     ]
 })
