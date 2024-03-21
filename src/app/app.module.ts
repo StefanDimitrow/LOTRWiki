@@ -14,8 +14,6 @@ import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
-import { SpeciesComponent } from './pages/species/species.component';
-import { RealmsComponent } from './pages/realms/realms.component';
 import { AngularFireModule } from '@angular/fire/compat'
 import { environments } from './environments/environments';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -35,8 +33,6 @@ import { FormsModule } from '@angular/forms';
         BooksComponent,
         FilmsComponent,
         CharactersComponent,
-        SpeciesComponent,
-        RealmsComponent,
         SignupComponent,
         LoginComponent,
     ],
