@@ -28,7 +28,7 @@
         </li>
         <li class="nav-item dropdown" *ngIf="isLoggedIn">
           <a
-            class="nav-link dropdown-toggle account-button btn btn-outline-success"
+            class="btn btn-outline-success"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -36,16 +36,20 @@
           >
             Account
           </a>
-          <ul class="dropdown-menu dropdown-menu-center"> <!-- Adding 'dropdown-menu-center' class -->
-            <li><a class="dropdown-item" href="/posts">View posts</a></li>
+          <ul class="dropdown-menu dropdown-menu-center">
+            <li><a class="dropdown-item" href="/posts">Dashboard</a></li>
             <li><hr class="dropdown-divider" /></li>
-            <li><button class="dropdown-item logout-button btn btn-outline-success" (click)="signout()">Logout</button></li>
+            <li>
+              <button
+                class="btn btn-outline-success"
+                (click)="signout()"
+              >
+                Logout
+              </button>
+            </li>
           </ul>
         </li>
-        
-        
-        
-        
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
