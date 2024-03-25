@@ -3,8 +3,9 @@ export interface Book {
     title: string;
     author: string;
     info: string;
-    publicationDate:string;
+    publicationDate: string;
 }
+
 export interface Film {
     id: number;
     title: string;
@@ -23,6 +24,5 @@ export interface Film {
     budget: string;
     preceded: string;
     narators: string;
-    followed: string
-  }
-  
+    followed: string;
+}

@@ -1,4 +1,5 @@
 .main-wrapper {
+  background-image: url(../../../src/assets/img/wallpaperflare.com_wallpaper.jpg);
   display: flex;
   flex-direction: column;
 }

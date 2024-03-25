@@ -16,4 +16,7 @@ export class DataService {
   getLotrFilms(): Observable<any[]>{
     return this.http.get<any[]>(`${this.baseUrl}films/lotr.json`)
   }
+  getHobbitFilms(): Observable<any[]>{
+    return this.http.get<any[]>(`${this.baseUrl}films/hobbit.json`)
+  }
 }

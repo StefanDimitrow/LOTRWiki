@@ -32,7 +32,11 @@
       <mat-card *ngFor="let film of films; let i = index" class="film-card">
         <mat-card-header>
           <mat-card-title>Title: {{ film.title }}</mat-card-title>
-          <button type="button" class="btn btn-primary btn-lg" (click)="showMoreInfo(i)">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            (click)="showMoreInfo(i)"
+          >
             Details
           </button>
         </mat-card-header>
@@ -57,7 +61,7 @@
       </mat-card>
     </div>
   </div>
-  
+
   <div class="film-info">
     <h1>The Hobbit film trilogy</h1>
     <p>
@@ -73,11 +77,46 @@
       The three parts, entitled The Hobbit: An Unexpected Journey, The Hobbit:
       The Desolation of Smaug, and The Hobbit: The Battle of the Five Armies
       were filmed back-to-back with the release dates December 2012, December
-      2013 and December 2014 by MGM and New Line Cinema. The production was
-      originally planned as a two-part adaptation, but ultimately became a
+      2013, and December 2014 by MGM and New Line Cinema. The production was
+      originally planned as a two-part adaptation but ultimately became a
       trilogy.
     </p>
+    <div class="card-container-hobbit">
+      <mat-card
+        *ngFor="let hobbitFilm of hobbitFilms; let i = index"
+        class="film-card"
+      >
+        <mat-card-header>
+          <mat-card-title>Title: {{ hobbitFilm.title }}</mat-card-title>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            (click)="showMoreHobbitInfo(i)"
+          >
+            Details
+          </button>
+        </mat-card-header>
+        <div *ngIf="hobbitInfoVisible[i]" class="film-details-hobbit">
+          <p><strong>Release Date: </strong> {{ hobbitFilm.releaseDate }}</p>
+          <p><strong>Director: </strong> {{ hobbitFilm.directors }}</p>
+          <p><strong>Producers: </strong> {{ hobbitFilm.producers }}</p>
+          <p><strong>Writers: </strong> {{ hobbitFilm.writers }}</p>
+          <p><strong>Actors: </strong> {{ hobbitFilm.actors }}</p>
+          <p><strong>Music: </strong> {{ hobbitFilm.music }}</p>
+          <p>
+            <strong>Cinematography: </strong> {{ hobbitFilm.cinematography }}
+          </p>
+          <p><strong>Editing: </strong> {{ hobbitFilm.editing }}</p>
+          <p><strong>Distributed by: </strong> {{ hobbitFilm.distributed }}</p>
+          <p><strong>Narrator: </strong> {{ hobbitFilm.narators }}</p>
+          <p><strong>Language: </strong> {{ hobbitFilm.language }}</p>
+          <p><strong>Country: </strong> {{ hobbitFilm.country }}</p>
+          <p><strong>Running time: </strong> {{ hobbitFilm.runningTime }}</p>
+          <p><strong>Budget: </strong> {{ hobbitFilm.budget }}</p>
+          <p><strong>Preceded by:</strong> {{ hobbitFilm.preceded }}</p>
+          <p><strong>Followed by:</strong> {{ hobbitFilm.followed }}</p>
+        </div>
+      </mat-card>
+    </div>
   </div>
 </div>
-
-<app-footer></app-footer>
