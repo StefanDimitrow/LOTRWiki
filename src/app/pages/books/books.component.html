@@ -1,20 +1,23 @@
 <app-navbar></app-navbar>
 <div class="wrapper">
-  <div class="card-wrapper">
+  <div class="card-container-lotr">
     <mat-card *ngFor="let book of books; let i = index" class="book-card">
       <mat-card-header>
         <mat-card-title>Title: {{ book.title }}</mat-card-title>
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          (click)="showMoreInfo(i)"
+        >
+          Details
+        </button>
       </mat-card-header>
-      <mat-card-actions>
-        <button type="button" class="btn btn-primary btn-lg" (click)="showMoreInfo(i)">More Info</button>
-      </mat-card-actions>
-      <div *ngIf="infoVisible[i]" class="book-info">
-        <p>Author: {{ book.author }}</p>
-        <p>Publication Date: {{ book.publicationDate }}</p>
-        <p>Info: {{ book.info }}</p>
+      <div *ngIf="infoVisible[i]" class="book-details">
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Publication Date:</strong> {{ book.publicationDate }}</p>
+        <p><strong>Info:</strong> {{ book.info }}</p>
       </div>
     </mat-card>
   </div>
 </div>
 <app-footer></app-footer>
-
