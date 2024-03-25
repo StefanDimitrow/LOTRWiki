@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="film-info">
+    <h1>The Lord of the Rings film trilogy</h1>
+    <p>
+      The Lord of the Rings film trilogy is comprised of three live action
+      fantasy adventure films; The Lord of the Rings: The Fellowship of the Ring
+      (2001), The Lord of the Rings: The Two Towers (2002) and The Lord of the
+      Rings: The Return of the King (2003). For simplicity, the titles are
+      sometimes abbreviated to 'LOTR', with 'FotR', 'TTT', and 'RotK' for each
+      of the respective films. Set in Middle-earth, the three films follow the
+      young Hobbit Frodo Baggins as he and the Fellowship embark on a quest to
+      destroy the One Ring, to ensure the destruction of the Dark Lord Sauron.
+      But the Fellowship breaks, and Frodo continues the quest together with his
+      loyal companion Sam and the treacherous Gollum. Meanwhile the wizard
+      Gandalf and Aragorn, heir in exile to the throne of Gondor, unite and
+      rally the Free Peoples of Middle-earth in several battles culminating in
+      the War of the Ring. The movies were directed by Peter Jackson and
+      released by New Line Cinema. The trilogy is based on the book The Lord of
+      the Rings by J.R.R. Tolkien and follows its general storyline, despite
+      some deviations. Considered to be one of the biggest movie projects ever
+      undertaken with an overall budget of $280 million, the entire project took
+      eight years, with the filming for all three films done simultaneously and
+      entirely in Jackson's native New Zealand. The trilogy was among the
+      highest-grossing films of all time, unadjusted for inflation. They are
+      critically acclaimed, winning 17 Academy Awards in total, as well as wide
+      praise for the cast and innovative practical and digital special effects.
+      Each film in the trilogy also had Special Extended Editions, released a
+      year after the theatrical release on DVD.
+    </p>
+    <div class="card-container-lotr">
+      <mat-card *ngFor="let film of films; let i = index" class="film-card">
+        <mat-card-header>
+          <mat-card-title>Title: {{ film.title }}</mat-card-title>
+          <button type="button" class="btn btn-primary btn-lg" (click)="showMoreInfo(i)">
+            Details
+          </button>
+        </mat-card-header>
+        <div *ngIf="infoVisible[i]" class="film-details">
+          <p><strong>Release Date: </strong> {{ film.releaseDate }}</p>
+          <p><strong>Director: </strong> {{ film.directors }}</p>
+          <p><strong>Producers: </strong> {{ film.producers }}</p>
+          <p><strong>Writers: </strong> {{ film.writers }}</p>
+          <p><strong>Actors: </strong> {{ film.actors }}</p>
+          <p><strong>Music: </strong> {{ film.music }}</p>
+          <p><strong>Cinematography: </strong> {{ film.cinematography }}</p>
+          <p><strong>Editing: </strong> {{ film.editing }}</p>
+          <p><strong>Distributed by: </strong> {{ film.distributed }}</p>
+          <p><strong>Narator: </strong> {{ film.narators }}</p>
+          <p><strong>Language: </strong> {{ film.language }}</p>
+          <p><strong>Country: </strong> {{ film.country }}</p>
+          <p><strong>Running time: </strong> {{ film.runningTime }}</p>
+          <p><strong>Budget: </strong> {{ film.budget }}</p>
+          <p><strong>Preceded by:</strong> {{ film.preceded }}</p>
+          <p><strong>Followed by:</strong> {{ film.followed }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  
+  <div class="film-info">
+    <h1>The Hobbit film trilogy</h1>
+    <p>
+      The Hobbit is a cinematic trilogy adaptation of J.R.R. Tolkien's The
+      Hobbit, distributed by New Line Cinema. Guillermo del Toro had originally
+      signed to direct the movies, but due to various delays and conflicts with
+      schedules, announced that he would not be able to direct them. The
+      position was later taken over by Peter Jackson, the director of the The
+      Lord of the Rings films, who became Executive Producer. Certain cast (Ian
+      McKellen, Andy Serkis, Orlando Bloom, Hugo Weaving, Elijah Wood, Ian Holm,
+      Christopher Lee, Cate Blanchett ) and crew (Weta Workshop, John Howe, Alan
+      Lee, Mark Ordesky) reprised their roles from the Lord of the Rings films.
+      The three parts, entitled The Hobbit: An Unexpected Journey, The Hobbit:
+      The Desolation of Smaug, and The Hobbit: The Battle of the Five Armies
+      were filmed back-to-back with the release dates December 2012, December
+      2013 and December 2014 by MGM and New Line Cinema. The production was
+      originally planned as a two-part adaptation, but ultimately became a
+      trilogy.
+    </p>
+  </div>
+</div>
+
+<app-footer></app-footer>
