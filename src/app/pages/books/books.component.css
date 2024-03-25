@@ -3,6 +3,13 @@
   display: flex;
   flex-direction: column;
 }
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.card-container-lotr {
+  flex: 1;
+}
 
 .book-info {
   border-style: inset;
@@ -21,6 +28,7 @@
 .book-card {
   max-width: 500px;
   margin: 5rem;
+  margin-bottom: 20px;
 }
 
 .book-info-lotr {

@@ -1,23 +1,30 @@
 <app-navbar></app-navbar>
+
 <div class="wrapper">
-  <div class="card-container-lotr">
-    <mat-card *ngFor="let book of books; let i = index" class="book-card">
-      <mat-card-header>
-        <mat-card-title>Title: {{ book.title }}</mat-card-title>
-        <button
-          type="button"
-          class="btn btn-primary btn-lg"
-          (click)="showMoreInfo(i)"
-        >
-          Details
-        </button>
-      </mat-card-header>
-      <div *ngIf="infoVisible[i]" class="book-details">
-        <p><strong>Author:</strong> {{ book.author }}</p>
-        <p><strong>Publication Date:</strong> {{ book.publicationDate }}</p>
-        <p><strong>Info:</strong> {{ book.info }}</p>
-      </div>
-    </mat-card>
+  <div class="content">
+    <div class="card-container-lotr">
+      <mat-card *ngFor="let book of books; let i = index" class="book-card">
+        <mat-card-header>
+          <mat-card-title>Title: {{ book.title }}</mat-card-title>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            (click)="showMoreInfo(i)"
+          >
+            Details
+          </button>
+        </mat-card-header>
+        <div *ngIf="infoVisible[i]" class="book-details">
+          <p><strong>Author:</strong> {{ book.author }}</p>
+          <p><strong>Publication Date:</strong> {{ book.publicationDate }}</p>
+          <p><strong>Info:</strong> {{ book.info }}</p>
+        </div>
+      </mat-card>
+    </div>
+    <div class="img">
+      <img src="../../../assets/img/The_Lord_of_the_Rings_First_Copies.webp" alt="">
+    </div>
   </div>
 </div>
+
 <app-footer></app-footer>
