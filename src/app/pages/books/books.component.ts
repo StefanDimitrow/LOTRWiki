@@ -11,7 +11,6 @@ export class BooksComponent implements OnInit {
   books: Book[] = [];
   selectedBookIndex: number | null = null;
   infoVisible: boolean[] = [];
-
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -21,7 +20,6 @@ export class BooksComponent implements OnInit {
   getBooks(): void {
     this.dataService.getBooks().subscribe((response) => {
       this.books = Object.values(response);
-
       this.infoVisible = Array(this.books.length).fill(false);
     });
   }

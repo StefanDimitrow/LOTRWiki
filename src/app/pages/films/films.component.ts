@@ -30,7 +30,6 @@ export class FilmsComponent implements OnInit {
 
   getHobbitFilms(): void {
     this.dataService.getHobbitFilms().subscribe((hobbitResponse) => {
-      console.log("Hobbit Films Response:", hobbitResponse); // Add this line
       this.hobbitFilms = Object.values(hobbitResponse);
       this.hobbitInfoVisible = Array(this.hobbitFilms.length).fill(false);
     });

@@ -1,0 +1,15 @@
+.wrapper {
+  background-image: url(../../../assets/img/char-background.jpg);
+  display: flex;
+  flex-direction: column;
+  
+}
+.grid-container {
+    
+    margin: 15rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 20px; 
+  }
+  
+  
