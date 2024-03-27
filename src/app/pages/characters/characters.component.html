@@ -1,5 +1,34 @@
 <app-navbar></app-navbar>
-
-
-
+<div class="wrapper">
+  <div class="content">
+    <div class="card-container">
+      <mat-card *ngFor="let character of characters; let i = index" class="character-card">
+        <mat-card-header>
+          <mat-card-title><strong>Name: </strong>{{ character.name }}</mat-card-title>
+          <mat-card-title><strong>Titles:</strong> {{ character.titles }}</mat-card-title>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            (click)="showMoreInfo(i)"
+          >
+            Details
+          </button>
+        </mat-card-header>
+        <div *ngIf="infoVisible[i]" class="character-details">
+          <p><strong>Gender:</strong> {{ character.gender }}</p>
+          <p><strong>Birth date:</strong> {{ character.birth }}</p>
+          <p><strong>Death:</strong> {{ character.death }}</p>
+          <p><strong>Culture:</strong> {{ character.culture }}</p>
+          <p><strong>Rule:</strong> {{ character.ruke }}</p>
+          <p><strong>Height:</strong> {{ character.height }}</p>
+          <p><strong>Eyes:</strong> {{ character.eyes }}</p>
+          <p><strong>Hair:</strong> {{ character.hair }}</p>
+          <p><strong>Weapons:</strong> {{ character.weapons }}</p>
+          <p><strong>Actor:</strong> {{ character.actor }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>
+
