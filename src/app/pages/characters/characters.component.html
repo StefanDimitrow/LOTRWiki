@@ -1,34 +1,160 @@
 <app-navbar></app-navbar>
-<div class="wrapper">
-  <div class="content">
-    <div class="card-container">
-      <mat-card *ngFor="let character of characters; let i = index" class="character-card">
-        <mat-card-header>
-          <mat-card-title><strong>Name: </strong>{{ character.name }}</mat-card-title>
-          <mat-card-title><strong>Titles:</strong> {{ character.titles }}</mat-card-title>
-          <button
-            type="button"
-            class="btn btn-primary btn-lg"
-            (click)="showMoreInfo(i)"
-          >
-            Details
-          </button>
-        </mat-card-header>
-        <div *ngIf="infoVisible[i]" class="character-details">
-          <p><strong>Gender:</strong> {{ character.gender }}</p>
-          <p><strong>Birth date:</strong> {{ character.birth }}</p>
-          <p><strong>Death:</strong> {{ character.death }}</p>
-          <p><strong>Culture:</strong> {{ character.culture }}</p>
-          <p><strong>Rule:</strong> {{ character.ruke }}</p>
-          <p><strong>Height:</strong> {{ character.height }}</p>
-          <p><strong>Eyes:</strong> {{ character.eyes }}</p>
-          <p><strong>Hair:</strong> {{ character.hair }}</p>
-          <p><strong>Weapons:</strong> {{ character.weapons }}</p>
-          <p><strong>Actor:</strong> {{ character.actor }}</p>
+<div class="container-fluid">
+    <div class="col-md-8 mt-5">
+        <h5 class="text-danger">Character List</h5>
+        <div class="card p-3">
+            <div class="card body">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Titles</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Birth</th>
+                        <th scope="col">Death</th>
+                        <th scope="col">Culture</th>
+                        <th scope="col">Rule</th>
+                        <th scope="col">Height</th>
+                        <th scope="col">Eyes</th>
+                        <th scope="col">Hair</th>
+                        <th scope="col">Weapons</th>
+                        <th scope="col">Actor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let character of charactertsList">
+                        <td>{{character.name}}</td>
+                        <td>{{character.titles}}</td>
+                        <td>{{character.gender}}</td>
+                        <td>{{character.birth}}</td>
+                        <td>{{character.death}}</td>
+                        <td>{{character.culture}}</td>
+                        <td>{{character.ruke}}</td>
+                        <td>{{character.height}}</td>
+                        <td>{{character.eyes}}</td>
+                        <td>{{character.hair}}</td>
+                        <td>{{character.weapons}}</td>
+                        <td>{{character.actor}}</td>
+                        <td><button class="btn btn-outline-success-danger" (click)="deleteCharacter(character)">
+                            Delete
+                        </button></td>
+                      </tr>
+                
+                    </tbody>
+                  </table>
+            </div>
         </div>
-      </mat-card>
     </div>
-  </div>
-</div>
-<app-footer></app-footer>
+    <div class="row">
+      <div class="col-md-4 mt-5">
+        <button type="button" class="btn btn-outline-success mb-3" (click)="toggleAddForm()">
+          {{ showAddForm ? 'Hide Form' : 'Add Character' }} 
+        </button>
+        <div class="card border-0 shadow p-3" *ngIf="showAddForm"> 
+                <h5 class="text-center text-warning">Add Character</h5>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" [(ngModel)]="name" />
+                    <label for="name">Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="titles"
+                      [(ngModel)]="titles"
+                    />
+                    <label for="titles">Titles</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="gender"
+                      [(ngModel)]="gender"
+                    />
+                    <label for="gender">Gender</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="birth"
+                      [(ngModel)]="birth"
+                    />
+                    <label for="birth">Birth</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="death"
+                      [(ngModel)]="death"
+                    />
+                    <label for="death">Death</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="culture"
+                      [(ngModel)]="culture"
+                    />
+                    <label for="culture">Culture</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="ruler" [(ngModel)]="ruke" />
+                    <label for="ruler">Ruler</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="height"
+                      [(ngModel)]="height"
+                    />
+                    <label for="height">Height</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="eyes" [(ngModel)]="eyes" />
+                    <label for="eyes">Eyes</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="hair" [(ngModel)]="hair" />
+                    <label for="hair">Hair</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="weapons"
+                      [(ngModel)]="weapons"
+                    />
+                    <label for="weapons">Weapons</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="actor"
+                      [(ngModel)]="actor"
+                    />
+                    <label for="actor">Actor</label>
+                  </div>
+                  <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  (click)="addCharacter()"
+                >
+                  Add Character
+                </button>
+            </div>
+                
+               
+              </div>
+        </div>
+        
+    </div>
+  
 
+
+<app-footer></app-footer>
