@@ -1,4 +1,5 @@
 export interface Character {
+  userId: string
   id:string;
   name: string;
   titles: string;

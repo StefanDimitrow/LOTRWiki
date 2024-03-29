@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,19 @@ export class AuthService {
 
   isAuthenticated(): Observable<boolean> {
     return this.fireaut.authState.pipe(map(user => !!user));
+  }
+  getUserID(): Observable<string | null> {
+    return this.fireaut.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          
+          
+          return of(user.uid); // Return the user's UID if authenticated
+        } else {
+          return of(null); // Return null if user is not authenticated
+        }
+      })
+    );
   }
 
   login(email: string, password: string) {
