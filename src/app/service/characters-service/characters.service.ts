@@ -9,7 +9,7 @@ export class CharactersService {
 
   constructor(private afs: AngularFirestore) { }
 
-  addCharacters(character: Character) {
+  addCharacter(character: Character) {
     character.id = this.afs.createId();
     return this.afs.collection('/Characters').add(character);
   }
@@ -18,14 +18,13 @@ export class CharactersService {
     return this.afs.collection('/Characters/').snapshotChanges();
   }
 
-  deleteCharacter(character:Character) {
-    return this.afs.doc('/Characters/'+character.id).delete();
+  deleteCharacter(character: Character) {
+    return this.afs.doc('/Characters/' + character.id).delete();
   }
   
 
-  updateCharacters(character: Character) {
-    this.deleteCharacter(character);
-    this.addCharacters(character)
+  updateCharacter(character: Character) {
+    const { id, ...updatedCharacter } = character; // Destructure id and create updatedCharacter without it
+    return this.afs.doc(`/Characters/${id}`).update(updatedCharacter); // Use update directly on the document reference
   }
-  
 }

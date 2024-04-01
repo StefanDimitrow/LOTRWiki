@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from 'src/app/service/characters-service/characters';
 import { CharactersService } from 'src/app/service/characters-service/characters.service';
 import { AuthService } from 'src/app/service/authentication/auth.service';
@@ -9,9 +10,9 @@ import { AuthService } from 'src/app/service/authentication/auth.service';
   styleUrls: ['./characters.component.css'],
 })
 export class CharactersComponent implements OnInit {
-  charactertsList: Character[] = [];
+  charactersList: Character[] = [];
+  showAddForm: boolean = false;
   charactersObj: Character = {
-    userId: '',
     id: '',
     name: '',
     titles: '',
@@ -19,127 +20,152 @@ export class CharactersComponent implements OnInit {
     birth: '',
     death: '',
     culture: '',
-    ruke: '',
-    height: '',
-    eyes: '',
-    hair: '',
     weapons: '',
     actor: '',
+    userId: '',
   };
-  
-  id: string = '';
-  name: string = '';
-  titles: string = '';
-  gender: string = '';
-  birth: string = '';
-  death: string = '';
-  culture: string = '';
-  ruke: string = '';
-  height: string = '';
-  eyes: string = '';
-  hair: string = '';
-  weapons: string = '';
-  actor: string = '';
-  showAddForm: boolean = false;
 
-  constructor(private data: CharactersService,private auth: AuthService) {}
+  constructor(
+    private characterService: CharactersService,
+    private auth: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getAllCharacters();
+    // Check if the current route is the characters page
+    if (this.router.url.includes('/characters')) {
+      this.getAllCharacters();
+    }
   }
 
   getAllCharacters() {
-    this.data.getAllCharacters().subscribe(
-      (res) => {
-        this.charactertsList = res.map((e: any) => {
+    this.characterService.getAllCharacters().subscribe(
+      (res: any) => {
+        this.charactersList = res.map((e: any) => {
           const data = e.payload.doc.data();
           data.id = e.payload.doc.id;
-          
-
           return data;
         });
       },
       (err) => {
-        alert('Error while catching the data');
+        console.error('Error while fetching the data:', err);
+        alert('Error while fetching characters. Please try again later.');
       }
     );
   }
 
-  addCharacter() {
-    // Get the userID from AuthService
-    this.auth.getUserID().subscribe((userId: string | null) => { // Adjust the type of userId accordingly
-      if (userId) {
-        
-        
-        // Assign the userID to charactersObj
-        
-        
-        // Check if all required fields are filled in
-        if (
-          this.name &&
-          this.titles &&
-          this.gender &&
-          this.birth &&
-          this.death &&
-          this.culture &&
-          this.ruke &&
-          this.height &&
-          this.eyes &&
-          this.hair &&
-          this.weapons &&
-          this.actor
-        ) {
-          this.charactersObj.id=this.id;
-          this.charactersObj.userId = userId;
-          this.charactersObj.name = this.name;
-          this.charactersObj.titles = this.titles;
-          this.charactersObj.gender = this.gender;
-          this.charactersObj.birth = this.birth;
-          this.charactersObj.death = this.death;
-          this.charactersObj.culture = this.culture;
-          this.charactersObj.ruke = this.ruke;
-          this.charactersObj.height = this.height;
-          this.charactersObj.eyes = this.eyes;
-          this.charactersObj.hair = this.hair;
-          this.charactersObj.weapons = this.weapons;
-          this.charactersObj.actor = this.actor;
-          
-          // Add character
-          this.data.addCharacters(this.charactersObj);
-          this.resetForm();
-        } else {
-          alert('Fill all inputs!');
+  addOrUpdateCharacter() {
+    // Check if charactersObj is not null
+    if (this.charactersObj) {
+      // Ensure userID is set before adding or updating
+      this.auth.getUserID().subscribe((userId: string | null) => {
+        if (userId) {
+          this.charactersObj.userId = userId; // Set the userID
+          // If charactersObj has an ID, update the existing character
+          if (this.charactersObj.id) {
+            this.characterService
+              .updateCharacter(this.charactersObj)
+              .then(() => {
+                console.log('Character updated successfully');
+                this.resetForm();
+              })
+              .catch((error) => {
+                console.error('Error updating character:', error);
+                alert('Error updating character. Please try again later.');
+              });
+          } else {
+            // Otherwise, add a new character
+            this.characterService
+              .addCharacter(this.charactersObj)
+              .then(() => {
+                console.log('Character added successfully');
+                this.resetForm();
+              })
+              .catch((error) => {
+                console.error('Error adding character:', error);
+                alert('Error adding character. Please try again later.');
+              });
+          }
         }
+      });
+    }
+  }
+
+  editCharacter(character: Character) {
+    this.auth.getUserID().subscribe((userId: string | null) => {
+      if (userId === character.userId) {
+        // Set charactersObj to the character being edited
+        this.charactersObj = { ...character }; // Copy the character object to prevent direct mutation
+        this.showAddForm = true;
       } else {
-        // Handle case when user is not authenticated
-        console.log('User not authenticated');
-        // Optionally, you can redirect the user to the login page
-        // this.router.navigate(['/login']);
+        if (userId === null) {
+          // Handle the case where the user is not authenticated
+          console.error('User not authenticated');
+          window.alert('You must be logged in to edit characters.');
+        } else {
+          // Handle the case where the user is logged in but does not own the character
+          console.error("You can only edit characters you've created");
+          window.alert("You can only edit characters you've created.");
+        }
       }
+    }, error => {
+      console.error('Error getting user ID:', error);
+      // Handle the error here, such as displaying an error message to the user
+      window.alert('An error occurred while fetching user information for editing the character.');
     });
   }
   
-  resetForm() {
-    this.id = '';
-    this.name = '';
-    this.titles = '';
-    this.gender = '';
-    this.birth = '';
-    this.death = '';
-    this.culture = '';
-    this.ruke = '';
-    this.height = '';
-    this.eyes = '';
-    this.hair = '';
-    this.weapons = '';
-    this.actor = '';
-  }
-  updateCharacter() {}
   deleteCharacter(character: Character) {
-    if (window.confirm(`Are you sure?`)) this.data.deleteCharacter(character);
+    this.auth.getUserID().subscribe((userId: string | null) => {
+      if (userId === character.userId) {
+        if (window.confirm('Are you sure?')) {
+          this.characterService
+            .deleteCharacter(character)
+            .then(() => {
+              window.alert('Character deleted!');
+              this.getAllCharacters();
+              // Optionally, you can refresh the characters list or take other actions after deletion.
+            })
+            .catch((error) => {
+              console.error('Error deleting character:', error);
+              // Handle the error here, such as displaying an error message to the user
+              window.alert('An error occurred while deleting the character.');
+            });
+        }
+      } else {
+        window.alert('Only the user that created that Character can Delete or Edit it!');
+      }
+    }, error => {
+      console.error('Error getting user ID:', error);
+      // Handle the error here, such as displaying an error message to the user
+      window.alert('An error occurred while fetching user information for deleting the character.');
+    });
   }
+  
+  
+
   toggleAddForm() {
-    this.showAddForm = !this.showAddForm; 
-    this.resetForm(); 
+    this.showAddForm = !this.showAddForm;
+    if (!this.showAddForm) {
+      this.resetForm();
+    }
+  }
+
+  resetForm() {
+    this.charactersObj = {
+      id: '',
+      name: '',
+      titles: '',
+      gender: '',
+      birth: '',
+      death: '',
+      culture: '',
+      weapons: '',
+      actor: '',
+      userId: '',
+    };
+    this.showAddForm = false;
   }
 }
+

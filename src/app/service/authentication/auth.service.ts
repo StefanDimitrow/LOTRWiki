@@ -30,15 +30,13 @@ export class AuthService {
   }
   getUserID(): Observable<string | null> {
     return this.fireaut.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          
-          
-          return of(user.uid); // Return the user's UID if authenticated
-        } else {
-          return of(null); // Return null if user is not authenticated
-        }
-      })
+      map(user => user ? user.uid : null)
+    );
+  
+  }
+  getUserEmail(): Observable<any> {
+    return this.fireaut.authState.pipe(
+      map(user => user ? user.email : null)
     );
   }
 
@@ -65,7 +63,7 @@ export class AuthService {
   signout() {
     this.fireaut.signOut().then(() => {
       localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
     }, err => {
       alert(err.message);
     });

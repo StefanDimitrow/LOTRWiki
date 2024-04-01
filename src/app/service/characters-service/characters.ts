@@ -1,16 +1,12 @@
 export interface Character {
-  userId: string
-  id:string;
+  userId: string;
+  id: string;
   name: string;
   titles: string;
   gender: string;
   birth: string;
   death: string;
   culture: string;
-  ruke: string;
-  height: string;
-  eyes: string;
-  hair: string;
   weapons: string;
   actor: string;
 }
