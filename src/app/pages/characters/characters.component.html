@@ -1,71 +1,149 @@
 <app-navbar></app-navbar>
 <div class="wrapper">
-  <div class="col-md-4" *ngFor="let character of charactersList">
-    <div class="card mt-3">
-      <div class="card-body">
-        <h5 class="card-title">{{ character.name }}</h5>
-        <p class="card-text">Titles: {{ character.titles }}</p>
-        <p class="card-text">Gender: {{ character.gender }}</p>
-        <p class="card-text">Birth: {{ character.birth }}</p>
-        <p class="card-text">Death: {{ character.death }}</p>
-        <p class="card-text">Culture: {{ character.culture }}</p>
-        <p class="card-text">Weapons: {{ character.weapons }}</p>
-        <p class="card-text">Actor: {{ character.actor }}</p>
-        
-        <button class="btn btn-outline-danger" (click)="deleteCharacter(character)">Delete</button>
-        <button class="btn btn-outline-danger" (click)="editCharacter(character)">Update</button>
+  <div class="container-fluid">
+    <div class="row justify-content-center align-items-center mt-5">
+      <div class="col-md-6">
+        <button
+          type="button"
+          class="btn btn-outline-success mb-3"
+          (click)="toggleAddForm()"
+        >
+          {{ showAddForm ? "Hide Form" : "Add Character" }}
+        </button>
+
+        <div class="card border-0 shadow p-3" *ngIf="showAddForm">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              [(ngModel)]="charactersObj.name"
+            />
+            <label for="name">Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="titles"
+              [(ngModel)]="charactersObj.titles"
+            />
+            <label for="titles">Titles</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="gender"
+              [(ngModel)]="charactersObj.gender"
+            />
+            <label for="gender">Gender</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="birth"
+              [(ngModel)]="charactersObj.birth"
+            />
+            <label for="birth">Birth Date</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="death"
+              [(ngModel)]="charactersObj.death"
+            />
+            <label for="death">Death</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="culture"
+              [(ngModel)]="charactersObj.culture"
+            />
+            <label for="culture">Culture</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="weapons"
+              [(ngModel)]="charactersObj.weapons"
+            />
+            <label for="weapons">Weapons</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="actor"
+              [(ngModel)]="charactersObj.actor"
+            />
+            <label for="actor">Actor</label>
+          </div>
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            (click)="addOrUpdateCharacter()"
+          >
+            {{ charactersObj.id ? "Update Character" : "Add Character" }}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-4 mt-5">
-    <button
-      type="button"
-      class="btn btn-outline-success mb-3"
-      (click)="toggleAddForm()"
-    >
-      {{ showAddForm ? "Hide Form" : "Add Character" }}
-    </button>
-    <div class="card border-0 shadow p-3" *ngIf="showAddForm">
-      <h5 class="text-center text-warning">{{ charactersObj.id ? "Update Character" : "Add Character" }}</h5>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="name" [(ngModel)]="charactersObj.name" />
-        <label for="name">Name</label>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="grid-container">
+          <div class="card mb-3" *ngFor="let character of charactersList">
+            <div class="card-body">
+              <h1 class="card-name">{{ character.name }}</h1>
+              <p class="card-titles">Titles: {{ character.titles }}</p>
+              <button
+                class="btn btn-outline-success"
+                (click)="toggleDetails(character)"
+              >
+                More Info
+              </button>
+              <div *ngIf="character.showDetails">
+                <p class="card-text">
+                  <strong>Gender: </strong> {{ character.gender }}
+                </p>
+                <p class="card-text">
+                  <strong>Gender: </strong> {{ character.birth }}
+                </p>
+                <p class="card-text">
+                  <strong>Death: </strong> {{ character.death }}
+                </p>
+                <p class="card-text">
+                  <strong>Culture: </strong> {{ character.culture }}
+                </p>
+                <p class="card-text">
+                  <strong>Weapons:</strong> {{ character.weapons }}
+                </p>
+                <p class="card-text">
+                  <strong>Actor:</strong> {{ character.actor }}
+                </p>
+                <button
+                  class="btn btn-outline-success"
+                  (click)="deleteCharacter(character)"
+                >
+                  Delete
+                </button>
+                <button
+                  class="btn btn-outline-success"
+                  (click)="editCharacter(character)"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="titles" [(ngModel)]="charactersObj.titles" />
-        <label for="titles">Titles</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="gender" [(ngModel)]="charactersObj.gender" />
-        <label for="gender">Gender</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="birth" [(ngModel)]="charactersObj.birth" />
-        <label for="birth">Birth Date</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="death" [(ngModel)]="charactersObj.death" />
-        <label for="death">Death</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="culture" [(ngModel)]="charactersObj.culture" />
-        <label for="culture">Culture</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="weapons" [(ngModel)]="charactersObj.weapons" />
-        <label for="weapons">Weapons</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="actor" [(ngModel)]="charactersObj.actor" />
-        <label for="actor">Actor</label>
-      </div>
-      <button
-        type="button"
-        class="btn btn-outline-success"
-        (click)="addOrUpdateCharacter()"
-      >
-        {{ charactersObj.id ? "Update Character" : "Add Character" }}
-      </button>
     </div>
   </div>
 </div>

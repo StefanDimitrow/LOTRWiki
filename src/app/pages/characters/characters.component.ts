@@ -143,6 +143,9 @@ export class CharactersComponent implements OnInit {
     });
   }
   
+  toggleDetails(character: Character) {
+    character.showDetails = !character.showDetails;
+  }
   
 
   toggleAddForm() {

@@ -9,4 +9,6 @@ export interface Character {
   culture: string;
   weapons: string;
   actor: string;
+  showDetails?: boolean; 
 }
+
