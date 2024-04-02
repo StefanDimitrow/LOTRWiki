@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
-import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat';
 import { environments } from './environments/environments';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -23,39 +23,32 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorHandlerService } from './service/error-handling/errorhandling.service';
 
-
-
-
-
 @NgModule({
-    declarations: [
-        AppComponent,
-        MainComponent,
-        FactsComponent,
-        AsideComponent,
-        MapComponent,
-        HomeComponent,
-        BooksComponent,
-        FilmsComponent,
-        CharactersComponent,
-        SignupComponent,
-        LoginComponent,
-        
-      
-    ],
-    providers: [ErrorHandlerService],
-    bootstrap: [AppComponent],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        CoreModule,
-        SharedModule,
-        FormsModule,
-        AngularFireModule.initializeApp(environments.firebaseConfig),
-        BrowserAnimationsModule,
-        MatCardModule,
-        
-    ]
+  declarations: [
+    AppComponent,
+    MainComponent,
+    FactsComponent,
+    AsideComponent,
+    MapComponent,
+    HomeComponent,
+    BooksComponent,
+    FilmsComponent,
+    CharactersComponent,
+    SignupComponent,
+    LoginComponent,
+  ],
+  providers: [ErrorHandlerService],
+  bootstrap: [AppComponent],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environments.firebaseConfig),
+    BrowserAnimationsModule,
+    MatCardModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
