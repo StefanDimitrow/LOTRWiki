@@ -80,19 +80,26 @@ export class AuthService {
     );
   }
 
-  register(email: string, password: string) {
-    this.fireaut.createUserWithEmailAndPassword(email, password).then(
-      () => {
-        alert('Registration is complete!');
-        this.router.navigate(['/login']);
-      },
-      (_err) => {
-        alert('Please enter valid credentials!');
-        this.router.navigate(['/register']);
+  register(email: string, password: string, repeatPassword: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      if (password !== repeatPassword) {
+        reject(new Error('Passwords do not match'));
+        return;
       }
-    );
+  
+      this.fireaut.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert('Registration is complete!');
+          this.router.navigate(['/login']);
+          resolve();
+        })
+        .catch((error) => {
+          alert('Please enter valid credentials!');
+          this.router.navigate(['/register']);
+          reject(error);
+        });
+    });
   }
-
   signout() {
     this.fireaut.signOut().then(
       () => {

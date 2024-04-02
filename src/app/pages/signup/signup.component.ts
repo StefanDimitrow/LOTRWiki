@@ -9,28 +9,39 @@ import { AuthService } from 'src/app/service/authentication/auth.service';
 export class SignupComponent implements OnInit {
   email: string = '';
   password: string = '';
+  repeatPassword: string = ''; // New property to hold repeat password
+  errorMessage: string = '';
 
+  constructor(private auth: AuthService) {}
 
-  constructor(private auth: AuthService){}
-  
-  
   ngOnInit(): void {}
 
   register() {
-
-    if (this.email == '') {
-      alert('Please enter email');
+    if (this.email === '') {
+      this.errorMessage = 'Please enter email';
       return;
     }
-    if (this.password == '') {
-      alert('Please enter password');
+    if (this.password === '') {
+      this.errorMessage = 'Please enter password';
       return;
     }
-
-    this.auth.register(this.email, this.password);
-    this.email = '';
-    this.password = '';
-
-
+    if (this.password !== this.repeatPassword) {
+      this.errorMessage = 'Passwords do not match';
+      return;
+    }
+  
+    this.auth.register(this.email, this.password, this.repeatPassword)
+      .then(() => {
+        // Registration successful
+        
+        this.email = '';
+        this.password = '';
+        this.repeatPassword = '';
+      })
+      .catch((error) => {
+        // Registration failed
+        this.errorMessage = 'Registration failed: ' + error.message;
+      });
   }
 }
+
