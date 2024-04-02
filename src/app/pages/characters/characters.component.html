@@ -102,6 +102,7 @@
             <div class="card-body">
               <h1 class="card-name">{{ character.name }}</h1>
               <p class="card-titles">Titles: {{ character.titles }}</p>
+              <p class="card-creator">Created by: {{ character.creatorEmail }}</p>
               <button
                 class="btn btn-outline-success"
                 (click)="toggleDetails(character)"

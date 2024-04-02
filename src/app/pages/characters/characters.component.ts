@@ -23,6 +23,7 @@ export class CharactersComponent implements OnInit {
     weapons: '',
     actor: '',
     userId: '',
+    creatorEmail: ''
   };
 
   constructor(
@@ -43,10 +44,13 @@ export class CharactersComponent implements OnInit {
     this.characterService.getAllCharacters().subscribe(
       (res: any) => {
         this.charactersList = res.map((e: any) => {
-          const data = e.payload.doc.data();
+          const data = e.payload.doc.data() as Character;
           data.id = e.payload.doc.id;
           return data;
         });
+  
+        // No need to fetch creator email here
+  
       },
       (err) => {
         console.error('Error while fetching the data:', err);
@@ -62,31 +66,37 @@ export class CharactersComponent implements OnInit {
       this.auth.getUserID().subscribe((userId: string | null) => {
         if (userId) {
           this.charactersObj.userId = userId; // Set the userID
-          // If charactersObj has an ID, update the existing character
-          if (this.charactersObj.id) {
-            this.characterService
-              .updateCharacter(this.charactersObj)
-              .then(() => {
-                console.log('Character updated successfully');
-                this.resetForm();
-              })
-              .catch((error) => {
-                console.error('Error updating character:', error);
-                alert('Error updating character. Please try again later.');
-              });
-          } else {
-            // Otherwise, add a new character
-            this.characterService
-              .addCharacter(this.charactersObj)
-              .then(() => {
-                console.log('Character added successfully');
-                this.resetForm();
-              })
-              .catch((error) => {
-                console.error('Error adding character:', error);
-                alert('Error adding character. Please try again later.');
-              });
-          }
+          // Fetch the creator's email
+          this.auth.getUserEmail().subscribe((email: string | null) => {
+            if (email) {
+              this.charactersObj.creatorEmail = email; // Set the creator's email
+              // If charactersObj has an ID, update the existing character
+              if (this.charactersObj.id) {
+                this.characterService
+                  .updateCharacter(this.charactersObj)
+                  .then(() => {
+                    console.log('Character updated successfully');
+                    this.resetForm();
+                  })
+                  .catch((error) => {
+                    console.error('Error updating character:', error);
+                    alert('Error updating character. Please try again later.');
+                  });
+              } else {
+                // Otherwise, add a new character
+                this.characterService
+                  .addCharacter(this.charactersObj)
+                  .then(() => {
+                    console.log('Character added successfully');
+                    this.resetForm();
+                  })
+                  .catch((error) => {
+                    console.error('Error adding character:', error);
+                    alert('Error adding character. Please try again later.');
+                  });
+              }
+            }
+          });
         }
       });
     }
@@ -167,6 +177,7 @@ export class CharactersComponent implements OnInit {
       weapons: '',
       actor: '',
       userId: '',
+      creatorEmail: '',
     };
     this.showAddForm = false;
   }

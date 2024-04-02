@@ -17,12 +17,27 @@
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid black;
   text-align: justify;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: oblique;
 }
 .card-name,
 .card-titles {
   text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
 }
+
+.form-floating input {
+  font-size: 18px; /* Adjust the font size as needed */
+  height: 40px; /* Adjust the height of the input field */
+}
+
+/* Adjust label position */
+.form-floating label {
+  transform: translateY(-18px); /* Adjust the vertical position of the label */
+}
+
 
 .btn-outline-success {
   --bs-btn-color: #000;

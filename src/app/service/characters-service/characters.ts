@@ -1,4 +1,5 @@
 export interface Character {
+  creatorEmail:string;
   userId: string;
   id: string;
   name: string;
