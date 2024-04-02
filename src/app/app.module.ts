@@ -10,7 +10,7 @@ import { MapComponent } from './pages/map/map.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NavBtnComponent } from './shared/nav-btn/nav-btn.component';
+
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorHandlerService } from './service/error-handling/errorhandling.service';
-import { DashboardComponent } from './core/dashboard/dashboard/dashboard.component';
+
 
 
 
@@ -54,9 +54,8 @@ import { DashboardComponent } from './core/dashboard/dashboard/dashboard.compone
         FormsModule,
         AngularFireModule.initializeApp(environments.firebaseConfig),
         BrowserAnimationsModule,
-        MatCardModule
-       
-
+        MatCardModule,
+        
     ]
 })
 export class AppModule { }
