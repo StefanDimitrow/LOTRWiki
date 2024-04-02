@@ -1,0 +1,17 @@
+.wrapper {
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 270px auto; /* Center the wrapper horizontally */
+    border: 2px solid #ccc; /* Add border */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius */
+  }
+  .welcome-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  
+
+  

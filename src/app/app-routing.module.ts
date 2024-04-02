@@ -8,7 +8,7 @@ import { CharactersComponent } from './pages/characters/characters.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './service/authentication/auth.service';
-
+import { DashboardComponent } from './core/dashboard/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,13 +16,19 @@ const routes: Routes = [
   { path: 'map', component: MapComponent },
   { path: 'books', component: BooksComponent, canActivate: [AuthService] },
   { path: 'films', component: FilmsComponent, canActivate: [AuthService] },
-  { path: 'characters', component: CharactersComponent, canActivate: [AuthService] },
+  {
+    path: 'characters',
+    component: CharactersComponent,
+    canActivate: [AuthService],
+  },
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'characters/:id', component: CharactersComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

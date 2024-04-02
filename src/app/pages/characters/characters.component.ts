@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from 'src/app/service/characters-service/characters';
 import { CharactersService } from 'src/app/service/characters-service/characters.service';
 import { AuthService } from 'src/app/service/authentication/auth.service';
+import { ErrorHandlerService } from 'src/app/service/error-handling/errorhandling.service';
+import { Subscription, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css'],
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, OnDestroy {
   charactersList: Character[] = [];
   showAddForm: boolean = false;
+  errorMessage: string = '';
+  userIdSubscription: Subscription | undefined;
+  getAllCharactersSubscription: Subscription | undefined;
   charactersObj: Character = {
     id: '',
     name: '',
@@ -23,14 +28,14 @@ export class CharactersComponent implements OnInit {
     weapons: '',
     actor: '',
     userId: '',
-    creatorEmail: ''
+    creatorEmail: '',
   };
 
   constructor(
     private characterService: CharactersService,
     private auth: AuthService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) {}
 
   ngOnInit(): void {
@@ -40,23 +45,43 @@ export class CharactersComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    // Unsubscribe from subscriptions to prevent memory leaks
+    if (this.userIdSubscription) {
+      this.userIdSubscription.unsubscribe();
+    }
+    if (this.getAllCharactersSubscription) {
+      this.getAllCharactersSubscription.unsubscribe();
+    }
+  }
+
   getAllCharacters() {
-    this.characterService.getAllCharacters().subscribe(
-      (res: any) => {
+    // Create an observer object
+    const observer: Observer<any> = {
+      next: (res: any) => {
         this.charactersList = res.map((e: any) => {
           const data = e.payload.doc.data() as Character;
           data.id = e.payload.doc.id;
           return data;
         });
-  
-        // No need to fetch creator email here
-  
       },
-      (err) => {
-        console.error('Error while fetching the data:', err);
-        alert('Error while fetching characters. Please try again later.');
-      }
-    );
+      error: (error) => {
+        this.errorHandler.handleError(
+          'Error while fetching characters. Please try again later.'
+        ); // Use the error handling service
+      },
+      complete: () => {
+        // Unsubscribe after characters are processed
+        if (this.getAllCharactersSubscription) {
+          this.getAllCharactersSubscription.unsubscribe();
+        }
+      },
+    };
+
+    // Subscribe to getAllCharacters() with the observer
+    this.getAllCharactersSubscription = this.characterService
+      .getAllCharacters()
+      .subscribe(observer);
   }
 
   addOrUpdateCharacter() {
@@ -78,9 +103,10 @@ export class CharactersComponent implements OnInit {
                     console.log('Character updated successfully');
                     this.resetForm();
                   })
-                  .catch((error) => {
-                    console.error('Error updating character:', error);
-                    alert('Error updating character. Please try again later.');
+                  .catch(() => {
+                    this.errorHandler.handleError(
+                      'Error updating character. Please try again later.'
+                    );
                   });
               } else {
                 // Otherwise, add a new character
@@ -90,9 +116,10 @@ export class CharactersComponent implements OnInit {
                     console.log('Character added successfully');
                     this.resetForm();
                   })
-                  .catch((error) => {
-                    console.error('Error adding character:', error);
-                    alert('Error adding character. Please try again later.');
+                  .catch(() => {
+                    this.errorHandler.handleError(
+                      'Error adding character. Please try again later.'
+                    );
                   });
               }
             }
@@ -103,60 +130,89 @@ export class CharactersComponent implements OnInit {
   }
 
   editCharacter(character: Character) {
-    this.auth.getUserID().subscribe((userId: string | null) => {
-      if (userId === character.userId) {
-        // Set charactersObj to the character being edited
-        this.charactersObj = { ...character }; // Copy the character object to prevent direct mutation
-        this.showAddForm = true;
-      } else {
-        if (userId === null) {
-          // Handle the case where the user is not authenticated
-          console.error('User not authenticated');
-          window.alert('You must be logged in to edit characters.');
+    // Create an observer object
+    const observer: Observer<string | null> = {
+      next: (userId: string | null) => {
+        if (userId === character.userId) {
+          // Set charactersObj to the character being edited
+          this.charactersObj = { ...character }; // Copy the character object to prevent direct mutation
+          this.showAddForm = true;
         } else {
-          // Handle the case where the user is logged in but does not own the character
-          console.error("You can only edit characters you've created");
-          window.alert("You can only edit characters you've created.");
+          if (userId === null) {
+            // Handle the case where the user is not authenticated
+            this.errorHandler.handleError(
+              'You must be logged in to edit characters.'
+            );
+          } else {
+            // Handle the case where the user is logged in but does not own the character
+            this.errorHandler.handleError(
+              "You can only edit characters you've created."
+            );
+          }
+          // If the user is not the owner, unsubscribe from the subscription
+          this.userIdSubscription?.unsubscribe();
         }
-      }
-    }, error => {
-      console.error('Error getting user ID:', error);
-      // Handle the error here, such as displaying an error message to the user
-      window.alert('An error occurred while fetching user information for editing the character.');
-    });
+      },
+      error: () => {
+        this.errorHandler.handleError(
+          'An error occurred while fetching user information for editing the character.'
+        );
+        // If an error occurs, unsubscribe from the subscription
+        this.userIdSubscription?.unsubscribe();
+      },
+      complete: () => {
+        // Optional: handle completion if needed
+      },
+    };
+
+    // Subscribe to getUserID() with the observer
+    this.userIdSubscription = this.auth.getUserID().subscribe(observer);
   }
-  
+
   deleteCharacter(character: Character) {
-    this.auth.getUserID().subscribe((userId: string | null) => {
-      if (userId === character.userId) {
-        if (window.confirm('Are you sure?')) {
-          this.characterService
-            .deleteCharacter(character)
-            .then(() => {
-              window.alert('Character deleted!');
-              this.getAllCharacters();
-              // Optionally, you can refresh the characters list or take other actions after deletion.
-            })
-            .catch((error) => {
-              console.error('Error deleting character:', error);
-              // Handle the error here, such as displaying an error message to the user
-              window.alert('An error occurred while deleting the character.');
-            });
+    // Create an observer object
+    const observer: Observer<string | null> = {
+      next: (userId: string | null) => {
+        if (userId === character.userId) {
+          if (window.confirm('Are you sure?')) {
+            this.characterService
+              .deleteCharacter(character)
+              .then(() => {
+                window.alert('Character deleted!');
+                this.getAllCharacters();
+                // Optionally, you can refresh the characters list or take other actions after deletion.
+              })
+              .catch(() => {
+                this.errorHandler.handleError(
+                  'An error occurred while deleting the character.'
+                );
+              });
+          }
+        } else {
+          this.errorHandler.handleError(
+            'Only the user that created that Character can Delete or Edit it!'
+          );
+          // If the user is not the owner, unsubscribe from the subscription
+          this.userIdSubscription?.unsubscribe();
         }
-      } else {
-        window.alert('Only the user that created that Character can Delete or Edit it!');
-      }
-    }, error => {
-      console.error('Error getting user ID:', error);
-      // Handle the error here, such as displaying an error message to the user
-      window.alert('An error occurred while fetching user information for deleting the character.');
-    });
+      },
+      error: () => {
+        this.errorHandler.handleError(
+          'An error occurred while fetching user information for deleting the character.'
+        );
+      },
+      complete: () => {
+        // Optional: handle completion if needed
+      },
+    };
+
+    // Subscribe to getUserID() with the observer
+    this.userIdSubscription = this.auth.getUserID().subscribe(observer);
   }
-  
+
   toggleDetails(character: Character) {
     character.showDetails = !character.showDetails;
   }
-  
 
   toggleAddForm() {
     this.showAddForm = !this.showAddForm;
@@ -182,4 +238,3 @@ export class CharactersComponent implements OnInit {
     this.showAddForm = false;
   }
 }
-

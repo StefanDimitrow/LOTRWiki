@@ -21,6 +21,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { ErrorHandlerService } from './service/error-handling/errorhandling.service';
+import { DashboardComponent } from './core/dashboard/dashboard/dashboard.component';
 
 
 
@@ -38,9 +40,10 @@ import { MatCardModule } from '@angular/material/card';
         CharactersComponent,
         SignupComponent,
         LoginComponent,
+        
       
     ],
-    providers: [],
+    providers: [ErrorHandlerService],
     bootstrap: [AppComponent],
     imports: [
         HttpClientModule,
