@@ -74,7 +74,7 @@ export class AuthService {
         this.router.navigate(['/home']);
       },
       (_err) => {
-        alert('Something went wrong!');
+        alert('Please enter valid credentials!');
         this.router.navigate(['/login']);
       }
     );
@@ -87,7 +87,7 @@ export class AuthService {
         this.router.navigate(['/login']);
       },
       (_err) => {
-        alert('Something went wrong!');
+        alert('Please enter valid credentials!');
         this.router.navigate(['/register']);
       }
     );
