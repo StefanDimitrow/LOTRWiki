@@ -1,7 +1,11 @@
 <div class="header-wrapper">
-  <img
-    src="../../../assets/img/146768033123a810f5abad3aa0a1420b83498efab1.jpg"
-    alt=""
+  <!-- Apply animation to the img element -->
+  <img 
+    src="../../../assets/img/146768033123a810f5abad3aa0a1420b83498efab1.jpg" 
+    alt="" 
+    [@zoomIn]="imageState"
+    (mouseenter)="imageState = 'hovered'" 
+    (mouseleave)="imageState = 'normal'"
   />
   <section class="header-content">
     <h1>Welcome to LOTRWiki!</h1>
