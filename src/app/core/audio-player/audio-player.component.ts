@@ -1,10 +1,9 @@
-// audio-player.component.ts
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-audio-player',
   templateUrl: './audio-player.component.html',
-  styleUrls: ['./audio-player.component.css']
+  styleUrls: ['./audio-player.component.css'],
 })
 export class AudioPlayerComponent {
   @ViewChild('audioElement') audioElement!: ElementRef<HTMLAudioElement>;

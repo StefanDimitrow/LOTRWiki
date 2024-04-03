@@ -21,6 +21,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-style: oblique;
 }
+
 .card-name,
 .card-titles {
   text-align: center;
@@ -53,4 +54,10 @@
   --bs-btn-disabled-bg: #000;
   --bs-btn-disabled-border-color: #000;
   margin: 15px;
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens and larger */
+  }
 }

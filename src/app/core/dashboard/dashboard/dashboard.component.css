@@ -5,10 +5,30 @@
   padding: 20px;
   border-radius: 10px;
 }
+
 .welcome-message {
   font-size: 18px;
   margin-bottom: 20px;
 }
+
 h2 {
   font-size: 24px;
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    max-width: 90%; /* Adjust max-width for smaller screens */
+    margin: 50px auto; /* Adjust margin for smaller screens */
+    padding: 10px;
+  }
+  
+  .welcome-message {
+    font-size: 16px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+}
+    

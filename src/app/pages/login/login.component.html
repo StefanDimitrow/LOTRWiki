@@ -1,12 +1,18 @@
 <app-navbar></app-navbar>
+
 <div class="container-fluid">
   <div class="row mt-5 justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8 col-10">
-      <div class="card shadow">
-        <div class="card-body">
+      <div
+        class="card shadow"
+        style="background-color: lightgray; border-color: black"
+      >
+        <div class="card-body" style="font-size: 1.5rem">
           <form>
             <div class="mb-3">
-              <h4 class="text-dark text-muted">Login</h4>
+              <h4 class="text-dark text-muted" style="font-size: 1.5rem">
+                Login
+              </h4>
             </div>
             <div class="mb-3">
               <label for="emailInput" class="form-label">Email</label>
@@ -29,13 +35,17 @@
               />
             </div>
 
-            <button type="button" class="btn btn-info" (click)="login()">
+            <button
+              type="button"
+              class="btn btn-outline-success"
+              (click)="login()"
+            >
               Login
             </button>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <a href="/signup" style="text-decoration: none"
-                  >Need an account? <span class="text-danger">Register</span></a
+                  >Need an account?</a
                 >
               </div>
             </div>
