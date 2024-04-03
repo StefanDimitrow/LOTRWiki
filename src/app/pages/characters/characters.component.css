@@ -29,15 +29,13 @@
 }
 
 .form-floating input {
-  font-size: 18px; /* Adjust the font size as needed */
-  height: 40px; /* Adjust the height of the input field */
+  font-size: 18px;
+  height: 40px;
 }
 
-/* Adjust label position */
 .form-floating label {
-  transform: translateY(-18px); /* Adjust the vertical position of the label */
+  transform: translateY(-18px);
 }
-
 
 .btn-outline-success {
   --bs-btn-color: #000;

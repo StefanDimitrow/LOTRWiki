@@ -9,11 +9,13 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './service/authentication/auth.service';
 import { DashboardComponent } from './core/dashboard/dashboard/dashboard.component';
+import { ContactsComponent } from './pages/contacts/contacts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'map', component: MapComponent },
+  { path: 'contacts', component: ContactsComponent },
   { path: 'books', component: BooksComponent, canActivate: [AuthService] },
   { path: 'films', component: FilmsComponent, canActivate: [AuthService] },
   {

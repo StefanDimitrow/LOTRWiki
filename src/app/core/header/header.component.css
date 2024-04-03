@@ -1,7 +1,7 @@
 .header-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: gray
+  background-color: gray;
 }
 
 .header-content {

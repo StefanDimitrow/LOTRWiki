@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/service/api-dataservice/api-interface';
 import { DataService } from 'src/app/service/api-dataservice/dataservice.service';
-import { ErrorHandlerService } from '../../service/error-handling/errorhandling.service'
+import { ErrorHandlerService } from '../../service/error-handling/errorhandling.service';
 
 @Component({
   selector: 'app-books',

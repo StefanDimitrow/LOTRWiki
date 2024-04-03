@@ -3,15 +3,12 @@
   <div class="welcome-message">Welcome, {{ userEmail }}</div>
   <div class="char-list" *ngIf="charactersLists && charactersLists.length > 0">
     <h2>Characters you added:</h2>
-    
-      <div *ngFor="let character of charactersLists">
-        <p>
-          <a [routerLink]="['/characters', character.id]">{{
-            character.name
-          }}</a>
-        </p>
-      </div>
-    
+
+    <div *ngFor="let character of charactersLists">
+      <p>
+        <a [routerLink]="['/characters', character.id]">{{ character.name }}</a>
+      </p>
+    </div>
   </div>
 
   <div *ngIf="!charactersLists || charactersLists.length === 0">

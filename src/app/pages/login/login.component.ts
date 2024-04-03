@@ -4,20 +4,17 @@ import { AuthService } from 'src/app/service/authentication/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   login() {
-
     if (this.email == '') {
       alert('Please enter email');
       return;
@@ -30,7 +27,5 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.email, this.password);
     this.email = '';
     this.password = '';
-
-
   }
 }

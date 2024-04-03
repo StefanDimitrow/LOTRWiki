@@ -5,9 +5,9 @@
 }
 
 .aside-wrapper img {
-  width: 100%; 
-  max-width: 300px; 
-  height: auto; 
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   margin-bottom: 10px;
 }
 
@@ -27,5 +27,3 @@
 #aside-4 {
   margin-right: 5rem;
 }
-
-

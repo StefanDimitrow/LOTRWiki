@@ -1,5 +1,5 @@
 export interface Character {
-  creatorEmail:string;
+  creatorEmail: string;
   userId: string;
   id: string;
   name: string;
@@ -10,6 +10,5 @@ export interface Character {
   culture: string;
   weapons: string;
   actor: string;
-  showDetails?: boolean; 
+  showDetails?: boolean;
 }
-

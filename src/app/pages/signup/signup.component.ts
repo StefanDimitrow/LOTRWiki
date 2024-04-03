@@ -4,12 +4,12 @@ import { AuthService } from 'src/app/service/authentication/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
   email: string = '';
   password: string = '';
-  repeatPassword: string = ''; // New property to hold repeat password
+  repeatPassword: string = '';
   errorMessage: string = '';
 
   constructor(private auth: AuthService) {}
@@ -29,19 +29,16 @@ export class SignupComponent implements OnInit {
       this.errorMessage = 'Passwords do not match';
       return;
     }
-  
-    this.auth.register(this.email, this.password, this.repeatPassword)
+
+    this.auth
+      .register(this.email, this.password, this.repeatPassword)
       .then(() => {
-        // Registration successful
-        
         this.email = '';
         this.password = '';
         this.repeatPassword = '';
       })
       .catch((error) => {
-        // Registration failed
         this.errorMessage = 'Registration failed: ' + error.message;
       });
   }
 }
-

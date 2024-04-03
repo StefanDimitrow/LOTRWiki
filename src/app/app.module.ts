@@ -8,9 +8,7 @@ import { FactsComponent } from './main/facts/facts.component';
 import { AsideComponent } from './main/aside/aside.component';
 import { MapComponent } from './pages/map/map.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-
 import { BooksComponent } from './pages/books/books.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { CharactersComponent } from './pages/characters/characters.component';
@@ -22,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorHandlerService } from './service/error-handling/errorhandling.service';
+import { ContactsComponent } from './pages/contacts/contacts.component';
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [
@@ -36,6 +36,8 @@ import { ErrorHandlerService } from './service/error-handling/errorhandling.serv
     CharactersComponent,
     SignupComponent,
     LoginComponent,
+    ContactsComponent,
+   
   ],
   providers: [ErrorHandlerService],
   bootstrap: [AppComponent],
@@ -44,11 +46,11 @@ import { ErrorHandlerService } from './service/error-handling/errorhandling.serv
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule,
     FormsModule,
     AngularFireModule.initializeApp(environments.firebaseConfig),
     BrowserAnimationsModule,
     MatCardModule,
+    MatTooltipModule
   ],
 })
 export class AppModule {}

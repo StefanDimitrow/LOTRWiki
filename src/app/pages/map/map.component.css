@@ -1,9 +1,13 @@
 .map-wrapper {
+  background-image: url(../../../assets//img/map.jpg);
   display: flex;
   flex-direction: column;
-  background-color: rgba(167, 163, 163, 0.986);
+}
+.card {
+  margin: 10rem;
   text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  justify-content: center;
+  background-color: antiquewhite;
 }
 h1 {
   padding: 3rem;
@@ -12,20 +16,27 @@ h1 {
   text-align: center;
   text-decoration: underline;
   font-style: oblique;
+  line-height: 1.5;
 }
-.article-about{
-    padding: 5rem;
-    margin: 1rem;
-    font-size: 3rem;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-style: oblique;
+.article-about {
+  padding: 5rem;
+  margin: 1rem;
+  font-size: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-style: oblique;
+  line-height: 1.5;
 }
-.article-map{
-  padding: 1rem;
-  margin: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+button {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #000;
+  background-color: #ffc107;
+  border-radius: 10px;
+  border-color: #000;
+  margin: 15px;
+  padding: 15px;
 }
-
+button:hover {
+  color: white;
+  background-color: #000;
+  border-color: #000;
+}

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LikeBtnComponent } from './like-btn.component';
+import { ContactsComponent } from './contacts.component';
 
-describe('LikeBtnComponent', () => {
-  let component: LikeBtnComponent;
-  let fixture: ComponentFixture<LikeBtnComponent>;
+describe('ContactsComponent', () => {
+  let component: ContactsComponent;
+  let fixture: ComponentFixture<ContactsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LikeBtnComponent]
+      declarations: [ContactsComponent]
     });
-    fixture = TestBed.createComponent(LikeBtnComponent);
+    fixture = TestBed.createComponent(ContactsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

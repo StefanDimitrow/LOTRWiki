@@ -1,23 +1,19 @@
-
-.navbar-brand{
-    color: gold;
+.navbar-brand {
+  color: gold;
 }
-.nav-link.active{
-    color: gold;
+.nav-link.active {
+  color: gold;
 }
-.nav-link{
-    color: gold;
+.nav-link {
+  color: gold;
 }
-.form-control{
-    color: gold;
-    
+.form-control {
+  color: gold;
 }
 
-.btn-outline-success{
-    --bs-btn-color:gold;
-    --bs-btn-border-color:gold;
-    --bs-btn-hover-color: white;
-    --bs-btn-hover-bg:gold;
-    
+.btn-outline-success {
+  --bs-btn-color: gold;
+  --bs-btn-border-color: gold;
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: gold;
 }
-

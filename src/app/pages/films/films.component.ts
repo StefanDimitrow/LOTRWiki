@@ -33,7 +33,9 @@ export class FilmsComponent implements OnInit {
         this.infoVisible = Array(this.films.length).fill(false);
       },
       (error) => {
-        this.handleError('Error fetching Lord of the Rings films: ' + error.message);
+        this.handleError(
+          'Error fetching Lord of the Rings films: ' + error.message
+        );
       }
     );
   }
