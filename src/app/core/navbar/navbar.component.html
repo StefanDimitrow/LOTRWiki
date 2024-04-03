@@ -66,8 +66,12 @@
             <li><a class="dropdown-item" href="/characters">Characters</a></li>
           </ul>
         </li>
+
         <li class="nav-item"></li>
       </ul>
+      <div class="audio-player">
+        <app-audio-player></app-audio-player>
+      </div>
       <form class="d-flex" (ngSubmit)="search()">
         <input
           [(ngModel)]="searchQuery"

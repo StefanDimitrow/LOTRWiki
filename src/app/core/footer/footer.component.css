@@ -1,12 +1,17 @@
 .footer-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* Arrange elements at each end of the container */
+  align-items: center; /* Center vertically */
   border: none;
   background-color: rgb(0, 0, 0);
-  padding: 0;
+  padding: 10px;
   margin-top: auto;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column; /* Align elements vertically */
+  align-items: center; /* Center horizontally */
 }
 
 .image-wrapper {
@@ -21,3 +26,9 @@
   color: antiquewhite;
   padding-bottom: 20px;
 }
+
+.audio-player {
+  background-position-x: right; /* Move the audio player to the left */
+}
+
+

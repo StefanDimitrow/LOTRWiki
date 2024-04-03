@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+    AudioPlayerComponent,
   ],
   exports: [NavbarComponent, HeaderComponent, FooterComponent],
   imports: [CommonModule, RouterModule, FormsModule],

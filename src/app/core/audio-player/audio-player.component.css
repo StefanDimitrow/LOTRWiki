@@ -1,0 +1,17 @@
+.audio-player {
+  width: 200px; /* Adjust width as needed */
+}
+
+/* Adjust styles for the audio player controls as needed */
+button {
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+progress {
+  width: 100%;
+}

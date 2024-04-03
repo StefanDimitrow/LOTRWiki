@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, style, animate, transition,state } from '@angular/animations';
+import { CoreModule } from 'src/app/core/core.module';
 
 @Component({
   selector: 'app-aside',

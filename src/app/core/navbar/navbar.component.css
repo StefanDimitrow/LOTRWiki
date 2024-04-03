@@ -1,3 +1,6 @@
+.navbar{
+  display: flex;
+}
 .navbar-brand {
   color: gold;
 }
@@ -17,3 +20,9 @@
   --bs-btn-hover-color: white;
   --bs-btn-hover-bg: gold;
 }
+
+
+.audio-player{
+  margin-right:25rem
+}
+
